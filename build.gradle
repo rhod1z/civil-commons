@@ -6,8 +6,12 @@ plugins {
   id 'org.springframework.boot' version '2.7.9'
   id 'org.owasp.dependencycheck' version '8.1.2'
   id 'com.github.ben-manes.versions' version '0.45.0'
-  // id 'org.sonarqube' version '4.0.0.2929'
-  id 'org.sonarqube' version '3.5.0.2730'
+  // id 'org.sonarqube' version '3.5.0.2730'
+  // This version failed with the error below:
+  // FAILURE: Build failed with an exception.
+  // * What went wrong:
+  // 'org.gradle.api.provider.Provider org.gradle.api.reporting.Report.getOutputLocation()'
+  id 'org.sonarqube' version '4.0.0.2929'
   id 'java-library'
 }
 
@@ -64,13 +68,6 @@ jacocoTestReport {
 
 project.tasks['sonarqube'].dependsOn jacocoTestReport
 
-// sonarqube {
-//   properties {
-//     property "sonar.projectName", "Reform :: Civil Commons Library"
-//     property "sonar.projectKey", "uk.gov.hmcts.reform:spring-boot-template"
-//   }
-// }
-
 sonarqube {
   properties {
     property "sonar.projectKey", "proj-civil-commons"
@@ -78,6 +75,13 @@ sonarqube {
     property "sonar.host.url", "https://sonarcloud.io"
   }
 }
+
+// sonarqube {
+//   properties {
+//     property "sonar.projectName", "Reform :: Civil Commons Library"
+//     property "sonar.projectKey", "uk.gov.hmcts.reform:spring-boot-template"
+//   }
+// }
 
 // before committing a change, make sure task still works
 dependencyUpdates {
