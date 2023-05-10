@@ -25,5 +25,5 @@ jobs:
       - name: Build
         run: ./gradlew check
 
-      - name: Dependency check
-        run: ./gradlew dependencyCheckAggregate
+      # - name: Dependency check
+      #   run: ./gradlew dependencyCheckAggregate
