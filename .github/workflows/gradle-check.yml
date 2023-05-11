@@ -32,7 +32,7 @@ jobs:
           tree
 
       - name: Dependency check
-        run: ./gradlew dependencyCheckAggregate
+        run: ./gradlew clean dependencyCheckAggregate
 
       - name: Debug
         run: |
