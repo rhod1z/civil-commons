@@ -27,8 +27,16 @@ jobs:
       - name: Build
         run: ./gradlew check
 
+      - name: Debug
+        run: |
+          tree
+
       - name: Dependency check
         run: ./gradlew dependencyCheckAggregate
+
+      - name: Debug
+        run: |
+          tree
 
       - name: Upload dependency-check report
         uses: actions/upload-artifact@v2
