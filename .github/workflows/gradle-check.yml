@@ -29,3 +29,9 @@ jobs:
 
       - name: Dependency check
         run: ./gradlew dependencyCheckAggregate
+
+      - name: Upload dependency-check report
+        uses: actions/upload-artifact@v2
+        with:
+          name: dependency-check-report
+          path: build/reports/dependency-check/
