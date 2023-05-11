@@ -1,0 +1,31 @@
+name: Upload
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  build:
+    name: Upload
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Step 1
+        run: mkdir downloads
+
+      - name: Step 2
+        run: |
+          cd downloads
+          echo 'alpha' > alpha.html
+          echo 'bravo' > bravo.html
+          echo 'tange' > tango.html
+          cd ..
+
+      - name: Step 3
+        uses: actions/upload-artifact@v2
+        with:
+          name: assets-for-download
+          path: downloads
